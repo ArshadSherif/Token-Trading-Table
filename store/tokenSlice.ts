@@ -21,8 +21,18 @@ const tokenSlice = createSlice({
   reducers: {
     upsertTokens(state, action: PayloadAction<readonly Token[]>) {
       for (const token of action.payload) {
+        const prev = state.byId[token.id];
+
         state.byId[token.id] = token;
 
+        // remove from old stage if stage changed
+        if (prev && prev.stage !== token.stage) {
+          state.byStage[prev.stage] = state.byStage[prev.stage].filter(
+            (id) => id !== token.id
+          );
+        }
+
+        // add to new stage if not present
         if (!state.byStage[token.stage].includes(token.id)) {
           state.byStage[token.stage].push(token.id);
         }

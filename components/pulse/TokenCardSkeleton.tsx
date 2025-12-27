@@ -2,7 +2,7 @@ export default function TokenCardSkeleton() {
   return (
     <div
       className="
-        h-[96px]
+        h-full
         w-full
         flex flex-col
         bg-[#0f1015]

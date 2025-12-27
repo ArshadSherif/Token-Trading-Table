@@ -6,5 +6,14 @@ export const makeSelectStageTokens = (stage: TokenStage) =>
   createSelector(
     (state: RootState) => state.tokens.byStage[stage],
     (state: RootState) => state.tokens.byId,
-    (ids, byId) => ids.map((id) => byId[id]).filter(Boolean)
+    (ids, byId) =>
+      ids
+        .map((id) => byId[id])
+        .filter(Boolean)
+        .sort((a, b) =>
+          b.updatedAt !== a.updatedAt
+            ? b.updatedAt - a.updatedAt
+            : b.volume24h - a.volume24h
+        )
   );
+
