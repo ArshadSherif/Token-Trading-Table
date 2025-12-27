@@ -8,6 +8,7 @@ import TokenCard from "./TokenCard";
 import TokenCardSkeleton from "./TokenCardSkeleton";
 import ColumnHeader from "./ColumnHeader";
 import ColumnHeaderSkeleton from "./ColumnHeaderSkeleton";
+import PulseTopBar from "./PulseTopBar";
 
 function ColumnSection({
   title,
@@ -52,7 +53,8 @@ export default function Columns() {
     migratedTokens.length === 0;
 
   return (
-    <div className="h-full w-full px-[24px] py-[24px]">
+    <div className="h-full w-full px-[24px] py-[20px]">
+      <PulseTopBar/>
       <div className="grid grid-cols-3 gap-[2px] h-full">
         <ColumnSection
           title="New Pairs"
