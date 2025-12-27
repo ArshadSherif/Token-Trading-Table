@@ -11,6 +11,7 @@ import {
 } from "@radix-ui/react-icons";
 
 import { WalletIcon } from "@phosphor-icons/react";
+import WalletDropdown from "./WalletDropdown";
 
 export default function PulseTopBar() {
   return (
@@ -53,7 +54,7 @@ export default function PulseTopBar() {
             <DropdownMenu.Content
               align="end"
               sideOffset={8}
-              className="bg-[#111217] border border-white/10 rounded-md p-[6px] shadow-lg"
+              className="bg-[#111217] border border-white/10 rounded-md p-[6px] shadow-lg z-[100]"
             >
               <MenuItem>Compact</MenuItem>
               <MenuItem>Comfortable</MenuItem>
@@ -77,36 +78,11 @@ export default function PulseTopBar() {
         </IconButton>
 
         {/* WALLET DROPDOWN */}
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild>
-            <button className="flex items-center gap-[8px] h-[32px] px-[14px] rounded-full border border-white/10 hover:bg-white/10 transition-colors">
-              {/* <span className="text-[15px] text-white">Wallet</span> */}
-              <WalletIcon size={16} color="white" />
-              <span className="text-[15px] text-white/70">1</span>
-              <img
-                src="/solana.png"
-                alt="Solana"
-                className="w-[16px] h-[16px] opacity-100"
-              />
-
-              <span className="text-[15px] text-white/70">0</span>
-              <ChevronDownIcon className="text-white/70 w-5 h-5" />
-            </button>
-          </DropdownMenu.Trigger>
-
-          <DropdownMenu.Portal>
-            <DropdownMenu.Content
-              align="end"
-              sideOffset={8}
-              className="bg-[#111217] border border-white/10 rounded-md p-[6px] shadow-lg"
-            >
-              <MenuItem>Wallet 1</MenuItem>
-              <MenuItem>Wallet 2</MenuItem>
-              <DropdownMenu.Separator className="h-[1px] bg-white/10 my-[6px]" />
-              <MenuItem className="text-red-400">Disconnect</MenuItem>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
-        </DropdownMenu.Root>
+        <WalletDropdown
+          walletCount={1}
+          balance={0}
+          chainIconSrc="/solana.png"
+        />
       </div>
     </div>
   );
