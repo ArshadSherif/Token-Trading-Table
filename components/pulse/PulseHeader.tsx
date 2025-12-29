@@ -142,7 +142,7 @@ export default function PulseHeader() {
             </DropdownMenu.Root>
 
             {/* DEPOSIT */}
-            <button className="hidden sm:flex h-[32px] px-[12px] rounded-full bg-blue-500 hover:bg-blue-600 items-center">
+            <button className="hidden sm:flex h-[32px] px-[12px] rounded-full bg-[#526FFF] hover:bg-blue-600 items-center">
               <span className="text-[14px] font-bold text-black">Deposit</span>
             </button>
 

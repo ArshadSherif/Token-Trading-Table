@@ -3,6 +3,12 @@
 import { memo, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import {
+  TooltipRoot,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/Tooltip";
+import { bondingColor } from "@/utils/bonding";
+import {
   Copy,
   User,
   Users,
@@ -20,6 +26,9 @@ import {
 } from "@phosphor-icons/react";
 import { Token } from "@/types/token";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
+import { marketCapColor } from "@/utils/tokenStyles";
+import { formatCompactUSD } from "@/utils/format";
+import { buyPressurePercent, txActivityPercent } from "@/utils/tokenMetrics";
 
 function shorten(addr: string) {
   return `${addr.slice(0, 3)}...${addr.slice(-3)}`;
@@ -35,6 +44,9 @@ function TokenCard({
   const prevPrice = useRef(token.price);
   const [flash, setFlash] = useState<"up" | "down" | null>(null);
   const seconds = useElapsedTime(token.updatedAt);
+  const bonding = token.bondingPercentage;
+  const bondColor = bondingColor(bonding);
+
 
   useEffect(() => {
     if (token.price > prevPrice.current) setFlash("up");
@@ -45,132 +57,178 @@ function TokenCard({
   }, [token.price]);
 
   return (
-    <div
-      className={clsx(
-        "w-full border-b border-white/5 px-[10px] py-[8px] transition-colors",
-        flash === "up" && "bg-green-500/10",
-        flash === "down" && "bg-red-500/10",
-        !flash && "bg-[#0f1015] hover:bg-white/5"
-      )}
-    >
-      <div className="flex gap-[10px]">
-        {/* IMAGE COLUMN */}
-        <div className="flex flex-col items-center gap-[2px] shrink-0">
-          <div className="w-[74px] h-[74px] rounded-l border border-white/20 overflow-hidden bg-black">
-            {token.image && (
-              <img
-                src={token.image}
-                alt={token.symbol}
-                className="w-full h-full object-cover"
-                draggable={false}
-              />
+    <TooltipRoot>
+      <TooltipTrigger asChild>
+        <div
+          className={clsx(
+            "w-full border-b border-white/5 px-[10px] py-[8px] transition-colors",
+            flash === "up" && "bg-green-500/10",
+            flash === "down" && "bg-red-500/10",
+            !flash && "bg-[#0f1015] hover:bg-white/5"
+          )}
+        >
+          <TooltipContent
+            side="top"
+            align="center"
+            sideOffset={6}
+            style={{ zIndex: 9999 }}
+            className={clsx(
+              "text-[13px] font-medium px-[6px] py-[2px] rounded",
+              "bg-[#111217] backdrop-blur-sm ",
+              bondColor === "red" && "text-red-400 ",
+              bondColor === "yellow" && "text-yellow-400 ",
+              bondColor === "green" && "text-emerald-400 "
             )}
-          </div>
-
-          <button
-            onClick={() => navigator.clipboard.writeText(token.id)}
-            className="text-[13px] text-white/40 hover:text-blue-600"
           >
-            {shorten(token.id)}
-          </button>
-        </div>
+            Bonding: {bonding.toFixed(2)}%
+          </TooltipContent>
 
-        {/* CONTENT */}
-        <div className="flex flex-col flex-1 gap-[4px] min-w-0">
-          {/* ROW 1 — NAME + MC */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-[5px] min-w-0">
-              <span className="text-[13px] font-medium truncate">
-                {token.name}
-              </span>
-              <Copy
-                size={12}
-                className="text-white/40 hover:text-white cursor-pointer"
-                onClick={() => navigator.clipboard.writeText(token.name)}
-              />
-            </div>
-
-            <div className="flex items-center gap-[4px] text-[11px]">
-              <span className="text-white/40">MC</span>
-              <span
-                className={clsx(
-                  "font-medium",
-                  column === "NEW" ? "text-sky-400" : "text-white"
+          <div className="flex gap-[10px]">
+            {/* IMAGE COLUMN */}
+            <div className="flex flex-col items-center gap-[2px] shrink-0">
+              <div className="w-[74px] h-[74px] rounded-l border border-white/20 overflow-hidden bg-black">
+                {token.image && (
+                  <img
+                    src={token.image}
+                    alt={token.symbol}
+                    className="w-full h-full object-cover"
+                    draggable={false}
+                  />
                 )}
+              </div>
+
+              <button
+                onClick={() => navigator.clipboard.writeText(token.id)}
+                className="text-[13px] text-white/40 hover:text-blue-600"
               >
-                ${token.marketCap.toLocaleString()}
-              </span>
+                {shorten(token.id)}
+              </button>
             </div>
-          </div>
 
-          {/* ROW 2 — TIMER + ICONS + V */}
-          <div className="flex items-center justify-between text-[11px]">
-            <div className="flex items-center gap-[6px] text-emerald-400">
-              {seconds}s
-              <User size={12} />
-              <ShareNetwork size={12} />
-              <MagnifyingGlass size={12} />
-              <span className="ml-[4px] flex items-center gap-[6px] text-white/60">
-                <Users size={12} />1
-                <ArrowsDownUp size={12} />0
-                <Trophy size={12} />0
-                <span className="flex items-center gap-[2px] text-yellow-400">
-                  <Crown size={12} weight="fill" />
-                  0/44
+            {/* CONTENT */}
+            <div className="flex flex-col flex-1  min-w-0">
+              {/* ROW 1 — NAME + MC */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-[5px] min-w-0">
+                  <span className="text-[17px] font-medium truncate">
+                    {token.name}
+                  </span>
+                  <Copy
+                    size={12}
+                    className="text-white/40 hover:text-white cursor-pointer"
+                    onClick={() => navigator.clipboard.writeText(token.name)}
+                  />
+                </div>
+                <div className="flex items-center gap-[4px] text-[13px]">
+                  <span className="text-white/40">MC</span>
+                  <span
+                    className={clsx(
+                      "font-medium text-[17px]",
+                      marketCapColor(token.marketCap, column)
+                    )}
+                  >
+                    ${formatCompactUSD(token.marketCap)}
+                  </span>
+                </div>
+              </div>
+
+              {/* ROW 2 — TIMER + ICONS + V */}
+              <div className="flex items-center justify-between text-[15px]">
+                <div className="flex items-center gap-[10px] text-emerald-400">
+                  {seconds}s
+                  <User size={14} />
+                  <ShareNetwork size={14} />
+                  <MagnifyingGlass size={14} />
+                  <span className="ml-[4px] flex items-center gap-[6px] text-white/60">
+                    <Users size={14} />1
+                    <ArrowsDownUp size={14} />0
+                    <Trophy size={14} />0
+                    <span className="flex items-center gap-[2px]">
+                      <Crown size={15} className=" text-yellow-400" />
+                      0/44
+                    </span>
+                  </span>
+                </div>
+
+                <span className="text-white/60 text-[11px] flex items-baseline gap-1">
+                  V
+                  <div className="text-[16px] text-white">
+                    ${formatCompactUSD(token.volume24h)}
+                  </div>
                 </span>
-              </span>
+              </div>
+
+              {/* ROW 3 — RIGHT METRICS ONLY */}
+              <div className="flex justify-end text-[11px] text-white/60">
+                <div className="flex items-center gap-[8px]">
+                  {/* F icon */}F{/* Solana icon + value */}
+                  <span className="flex items-center gap-[3px]">
+                    <img
+                      src="/solana.png"
+                      alt="sol"
+                      className="w-[20px] h-[20px]"
+                      draggable={false}
+                    />
+                    <span>0.02</span>
+                  </span>
+                  {/* TX */}
+                  <span className="flex items-center gap-[3px]">
+                    <span className="text-white/40">TX</span>
+                    <span>5</span>
+                  </span>
+                  {/* Activity slider */}
+                  <div className="w-[20px] h-[2px] rounded-full bg-red-500/70 overflow-hidden">
+                    <div
+                      className="h-full bg-emerald-400 transition-[width] duration-300"
+                      style={{
+                        width: `${buyPressurePercent(
+                          token.txCount,
+                          token.txDelta
+                        )}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* ROW 4 — PILLS + SOL BUTTON */}
+              <div className="flex items-center justify-between text-[12px]">
+                <div className="flex items-center gap-[4px]">
+                  <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
+                    <User size={13} className="text-emerald-400" />
+                    <span className="text-emerald-400">0%</span>
+                  </span>
+
+                  <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
+                    <ChefHat size={13} className="text-red-400" />
+                    <span className="text-red-400">0% · 1d</span>
+                  </span>
+
+                  <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
+                    <Target size={13} className="text-emerald-400" />
+                    <span className="text-emerald-400">0%</span>
+                  </span>
+
+                  <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
+                    <Ghost size={13} className="text-emerald-400" />
+                    <span className="text-emerald-400">0%</span>
+                  </span>
+
+                  <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
+                    <Stack size={13} className="text-red-400" />
+                    <span className="text-red-400">0%</span>
+                  </span>
+                </div>
+
+                <button className="max-lg:hidden flex items-center gap-[4px] h-[24px] px-[8px] rounded-full bg-[#526FFF] text-black text-[13px] font-medium">
+                  <Lightning size={13} weight="fill" />0 SOL
+                </button>
+              </div>
             </div>
-
-            <span className="text-white/60">
-              V ${token.volume24h.toLocaleString()}
-            </span>
-          </div>
-
-          {/* ROW 3 — RIGHT METRICS ONLY */}
-          <div className="flex justify-end text-[11px] text-white/60">
-            <div className="flex items-center gap-[6px]">
-              <CurrencyCircleDollar size={12} />
-              0.123 ◎ 0.02 TX 5
-              <div className="w-[18px] h-[2px] rounded-full bg-gradient-to-r from-green-400 to-red-400" />
-            </div>
-          </div>
-
-          {/* ROW 4 — PILLS + SOL BUTTON */}
-          <div className="flex items-center justify-between text-[12px]">
-            <div className="flex items-center gap-[4px]">
-              <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
-                <User size={13} className="text-emerald-400" />
-                <span className="text-emerald-400">0%</span>
-              </span>
-
-              <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
-                <ChefHat size={13} className="text-red-400" />
-                <span className="text-red-400">0% · 1d</span>
-              </span>
-
-              <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
-                <Target size={13} className="text-emerald-400" />
-                <span className="text-emerald-400">0%</span>
-              </span>
-
-              <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
-                <Ghost size={13} className="text-emerald-400" />
-                <span className="text-emerald-400">0%</span>
-              </span>
-
-              <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
-                <Stack size={13} className="text-red-400" />
-                <span className="text-red-400">0%</span>
-              </span>
-            </div>
-
-            <button className="max-lg:hidden flex items-center gap-[4px] h-[24px] px-[8px] rounded-full bg-sky-500 text-black text-[13px] font-medium">
-              <Lightning size={13} weight="fill" />0 SOL
-            </button>
           </div>
         </div>
-      </div>
-    </div>
+      </TooltipTrigger>
+    </TooltipRoot>
   );
 }
 
