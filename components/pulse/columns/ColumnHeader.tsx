@@ -1,51 +1,67 @@
+"use client";
+
+import { LightningBoltIcon } from "@radix-ui/react-icons";
+
+import TierDropdown from "@/components/ui/TierDropdown";
+import { FadersHorizontalIcon } from "@phosphor-icons/react";
+import FiltersModalWrapper from "@/components/ui/skeletons/FiltersModal";
+
 export default function ColumnHeader({ title }: { title: string }) {
   return (
     <div
       className="
         sticky top-0 z-30
-        flex flex-row items-center justify-between
+        flex items-center justify-between
         min-h-[50px]
         pl-[10px] pr-[12px]
         border-b border-white/10
         bg-[#111217]
       "
     >
-      <div className="flex flex-row items-center gap-[16px] flex-1">
-        <span className="text-[16px] font-medium text-white whitespace-nowrap">
-          {title}
-        </span>
-      </div>
+      {/* LEFT — TITLE */}
+      <span className="text-[16px] font-medium text-white whitespace-nowrap">
+        {title}
+      </span>
 
-      <div className="flex flex-row items-center gap-[12px]">
-        <div className="hidden lg:flex">
-          <div
-            className="
-              flex flex-row items-center
-              h-[28px]
-              pl-[6px] pr-[6px]
-              gap-[6px]
-              rounded-full
-              border border-white/10
-              bg-transparent
-              hover:bg-white/5
-              transition-colors duration-125
-            "
-          >
-            <div className="w-[14px] h-[14px] bg-white/30 rounded-sm" />
-
-            <div className="w-[24px] h-[14px] bg-white/20 rounded-sm" />
-
-            <div className="w-[14px] h-[14px] bg-white/40 rounded-full" />
-
-            <div className="h-full w-[1px] bg-white/10 mx-[2px]" />
-
-            <div className="flex gap-[3px]">
-              <div className="w-[22px] h-[22px] bg-white/20 rounded-[4px]" />
-              <div className="w-[22px] h-[22px] bg-white/10 rounded-[4px]" />
-              <div className="w-[22px] h-[22px] bg-white/10 rounded-r-full rounded-l-[4px]" />
+      {/* RIGHT — CONTROLS */}
+      <div className="flex items-center gap-[10px]">
+        {/* ===== PILL ===== */}
+        <div className="flex items-center h-[28px] rounded-full border border-white/10 overflow-hidden">
+          {/* LEFT SECTION */}
+          <div className="flex items-center justify-between gap-[6px] px-[10px] min-w-[80px]">
+            <div className="flex items-center gap-[4px] text-white/80">
+              <LightningBoltIcon />
+              <span className="text-[13px] font-medium">0</span>
             </div>
+
+            {/* SOL ICON */}
+            <img
+              src="/solana.png"
+              alt="sol"
+              className="w-[16px] h-[16px]"
+              draggable={false}
+            />
+          </div>
+
+          {/* DIVIDER */}
+          <div className="w-[1px] h-full bg-white/10" />
+
+          {/* RIGHT SECTION — P1 P2 P3 */}
+          <div className="flex items-center px-[6px] gap-[4px]">
+            <TierDropdown label="P1" active />
+            <TierDropdown label="P2" />
+            <TierDropdown label="P3" />
           </div>
         </div>
+
+        {/* ===== SETTINGS ICON ===== */}
+        <FiltersModalWrapper
+          trigger={
+            <button className="w-[28px] h-[28px] flex items-center justify-center hover:bg-white/5">
+              <FadersHorizontalIcon size={18} />
+            </button>
+          }
+        />
       </div>
     </div>
   );
