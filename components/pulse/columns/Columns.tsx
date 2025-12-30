@@ -4,37 +4,8 @@ import { useMemo } from "react";
 import { useAppSelector } from "@/store/hooks";
 import { makeSelectStageTokens } from "@/store/selector";
 import { useTokenSocket } from "@/hooks/useTokenSocket";
-import TokenCard from "./TokenCard";
-import TokenCardSkeleton from "./TokenCardSkeleton";
-import ColumnHeader from "./ColumnHeader";
-import ColumnHeaderSkeleton from "./ColumnHeaderSkeleton";
-import PulseTopBar from "./PulseTopBar";
-
-function ColumnSection({
-  title,
-  isLoading,
-  tokens,
-}: {
-  title: string;
-  isLoading: boolean;
-  tokens: any[];
-}) {
-  return (
-    <section className="flex flex-col h-full min-h-0 bg-[#111217] border border-white/10 rounded-[6px]">
-      {/* HEADER */}
-      {isLoading ? <ColumnHeaderSkeleton /> : <ColumnHeader title={title} />}
-
-      {/* SCROLL AREA */}
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden scroll-dark">
-        {isLoading
-          ? Array.from({ length: 6 }).map((_, i) => (
-              <TokenCardSkeleton key={i} />
-            ))
-          : tokens.map((t) => <TokenCard key={t.id} token={t} />)}
-      </div>
-    </section>
-  );
-}
+import PulseTopBar from "../layout/PulseTopBar";
+import ColumnSection from "./ColumnSection";
 
 export default function Columns() {
   useTokenSocket();
@@ -59,16 +30,21 @@ export default function Columns() {
       <div className="grid grid-cols-3 gap-[12px] flex-1 min-h-0 mt-[12px]">
         <ColumnSection
           title="New Pairs"
+          column="NEW"
           isLoading={isLoading}
           tokens={newTokens}
         />
+
         <ColumnSection
           title="Final Stretch"
+          column="FINAL"
           isLoading={isLoading}
           tokens={finalTokens}
         />
+
         <ColumnSection
           title="Migrated"
+          column="MIGRATED"
           isLoading={isLoading}
           tokens={migratedTokens}
         />

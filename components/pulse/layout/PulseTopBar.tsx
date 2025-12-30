@@ -14,14 +14,15 @@ import {
   SpeakerHighIcon,
   WalletIcon,
 } from "@phosphor-icons/react";
-import WalletDropdown from "./WalletDropdown";
-import DisplayDropdownSkeleton from "../ui/skeletons/DisplayDropDownSkeleton";
+
 import { useState } from "react";
+import DisplayDropdownSkeleton from "@/components/ui/skeletons/DisplayDropDownSkeleton";
+import WalletDropdown from "@/components/ui/skeletons/WalletDropdown";
 
 export default function PulseTopBar() {
   const [open, setOpen] = useState(false);
   return (
-    <div className="w-full h-[55px] flex items-center  border-b border-white/10">
+    <div className="w-full h-[48px] flex items-center">
       {/* LEFT SECTION */}
       <div className="flex items-center gap-[16px]">
         <span className="text-white text-[20px] font-medium">Pulse</span>
@@ -94,7 +95,6 @@ export default function PulseTopBar() {
   );
 }
 
-/* ---------------- helpers ---------------- */
 
 function IconButton({ children }: { children: React.ReactNode }) {
   return (
@@ -104,18 +104,3 @@ function IconButton({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MenuItem({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <DropdownMenu.Item
-      className={`px-[10px] py-[8px] text-[15px] rounded cursor-pointer outline-none hover:bg-white/10 focus:bg-white/15 ${className}`}
-    >
-      {children}
-    </DropdownMenu.Item>
-  );
-}

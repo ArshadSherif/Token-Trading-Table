@@ -14,13 +14,11 @@ export default function WalletDropdownSkeleton() {
         <div className="ml-auto text-white/40 text-[16px]">⚙</div>
       </div>
 
-      {/* Wallet row */}
       <div className="px-[12px] py-[10px] border-b border-white/10">
         <div className="flex items-center gap-[10px]">
           {/* checkbox */}
           <div className="w-[14px] h-[14px] rounded-[3px] border border-orange-400 bg-orange-400/20" />
 
-          {/* wallet info */}
           <div className="flex-1 min-w-0">
             <div className="text-[14px] font-medium text-orange-400">
               Axiom Main
@@ -31,7 +29,6 @@ export default function WalletDropdownSkeleton() {
             </div>
           </div>
 
-          {/* right controls */}
           <div className="flex items-center gap-[8px]">
             <div className="px-[8px] h-[22px] rounded-full bg-white/5 text-white/60 text-[12px] flex items-center">
               ≡ 0
@@ -44,7 +41,6 @@ export default function WalletDropdownSkeleton() {
         </div>
       </div>
 
-      {/* Add wallet */}
       <button className="flex items-center gap-[6px] px-[12px] py-[10px] text-[14px] text-white/60 hover:bg-white/5 rounded-b-xl">
         <span className="text-[18px] leading-none">+</span>
         Add Wallet

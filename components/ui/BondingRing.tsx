@@ -27,7 +27,7 @@ export function BondingRing({
       viewBox="0 0 100 100"
       pointerEvents="none"
     >
-      {/* permanent subtle border */}
+      
       <rect
         x="3"
         y="3"
@@ -40,7 +40,7 @@ export function BondingRing({
         strokeWidth="1.5"
       />
 
-      {/* thinner, softer animated stroke */}
+ 
       <rect
         x="3"
         y="3"

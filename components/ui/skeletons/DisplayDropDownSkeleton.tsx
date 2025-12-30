@@ -3,7 +3,6 @@ import clsx from "clsx";
 export default function DisplayDropdownSkeleton() {
   return (
     <div className="w-[360px] bg-[#111217] rounded-xl p-[14px] shadow-2xl ">
-      {/* Metrics */}
       <section className="mb-[14px]">
         <div className="text-[13px] text-white/60 mb-[8px]">Metrics</div>
         <div className="grid grid-cols-2 gap-[8px]">
@@ -18,7 +17,6 @@ export default function DisplayDropdownSkeleton() {
         </div>
       </section>
 
-      {/* Quick Buy */}
       <section className="mb-[14px]">
         <div className="text-[13px] text-white/60 mb-[8px]">Quick Buy</div>
         <div className="grid grid-cols-4 gap-[6px]">
@@ -37,13 +35,11 @@ export default function DisplayDropdownSkeleton() {
         </div>
       </section>
 
-      {/* Color */}
       <section className="mb-[14px] flex items-center gap-[8px]">
         <div className="w-[14px] h-[14px] rounded-full bg-white/60" />
         <span className="text-[13px] text-white">Grey</span>
       </section>
 
-      {/* Tabs */}
       <section className="flex gap-[6px] mb-[12px]">
         {["Layout", "Metrics", "Row", "Extras"].map((t, i) => (
           <div
@@ -58,7 +54,6 @@ export default function DisplayDropdownSkeleton() {
         ))}
       </section>
 
-      {/* Toggles */}
       <section className="space-y-[8px] mb-[14px]">
         {[
           "Show Search Bar",
@@ -81,7 +76,6 @@ export default function DisplayDropdownSkeleton() {
         ))}
       </section>
 
-      {/* Checkboxes */}
       <section className="space-y-[8px] mb-[14px]">
         {["Circle Images", "Progress Bar", "Spaced Tables"].map((l) => (
           <div
@@ -94,7 +88,6 @@ export default function DisplayDropdownSkeleton() {
         ))}
       </section>
 
-      {/* Customize rows */}
       <section>
         <div className="text-[13px] text-white/60 mb-[8px]">Customize rows</div>
         <div className="flex flex-wrap gap-[6px]">

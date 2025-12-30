@@ -4,7 +4,8 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { WalletIcon } from "@phosphor-icons/react";
 import { useState } from "react";
-import WalletDropdownSkeleton from "../ui/skeletons/WalletDropDownSkeleton";
+import WalletDropdownSkeleton from "./WalletDropDownSkeleton";
+
 
 type WalletDropdownProps = {
   walletCount: number;

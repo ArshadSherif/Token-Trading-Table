@@ -8,7 +8,7 @@ import {
   TooltipContent,
 } from "@/components/ui/Tooltip";
 import { bondingColor } from "@/utils/bonding";
-import { BondingRing } from "../ui/BondingRing";
+import { BondingRing } from "../../ui/BondingRing";
 
 import {
   Copy,
@@ -24,7 +24,6 @@ import {
   MagnifyingGlass,
   ShareNetwork,
   ChefHat,
-  EyeSlashIcon,
 } from "@phosphor-icons/react";
 import { Token } from "@/types/token";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
@@ -172,7 +171,6 @@ function TokenCard({
               {/* ROW 3 — RIGHT METRICS ONLY */}
               <div className="flex justify-end text-[11px] text-white/60">
                 <div className="flex items-center gap-[8px]">
-                  {/* F icon */}F{/* Solana icon + value */}
                   <span className="flex items-center gap-[3px]">
                     <img
                       src="/solana.png"
@@ -182,12 +180,12 @@ function TokenCard({
                     />
                     <span>0.02</span>
                   </span>
-                  {/* TX */}
+
                   <span className="flex items-center gap-[3px]">
                     <span className="text-white/40">TX</span>
                     <span>5</span>
                   </span>
-                  {/* Activity slider */}
+
                   <div className="w-[20px] h-[2px] rounded-full bg-red-500/70 overflow-hidden">
                     <div
                       className="h-full bg-emerald-400 transition-[width] duration-300"

@@ -1,6 +1,6 @@
 import PulseHeader from "./PulseHeader";
 import PulseControls from "./PulseControls";
-import Columns from "./Columns";
+import Columns from "../columns/Columns";
 import PulseFooter from "./PulseFooter";
 
 export default function PulseLayout() {
@@ -17,7 +17,7 @@ export default function PulseLayout() {
       </div>
 
       {/* COLUMNS — TAKES ALL REMAINING SPACE */}
-      <div className="flex-1 min-h-0 overflow-hidden pb-[16px]">
+      <div className="flex-1 min-h-0 overflow-hidden pb-[25px]">
         <Columns />
       </div>
 

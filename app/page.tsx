@@ -1,4 +1,4 @@
-import PulseLayout from "@/components/pulse/PulseLayout";
+import PulseLayout from "@/components/pulse/layout/PulseLayout";
 
 
 export default function Home() {

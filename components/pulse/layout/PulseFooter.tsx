@@ -6,7 +6,6 @@ import { SiSolana } from "react-icons/si";
 import {
   HamburgerMenuIcon,
   ChevronDownIcon,
-  LayoutIcon,
   TwitterLogoIcon,
   DiscordLogoIcon,
 } from "@radix-ui/react-icons";
@@ -14,7 +13,6 @@ import {
 import {
   Compass,
   Pulse,
-  CoinVerticalIcon,
   GasPump,
   Database,
   PillIcon,
@@ -25,20 +23,21 @@ import {
   BrowserIcon,
   BellIcon,
   GearIcon,
-  PaletteIcon
+  PaletteIcon,
 } from "@phosphor-icons/react";
-
-import WalletDropdown from "./WalletDropdown";
-
-/* =========================
-   MAIN COMPONENT
-========================= */
+import WalletDropdown from "@/components/ui/skeletons/WalletDropdown";
+import Divider from "@/components/ui/Divider";
+import IconButton from "@/components/ui/IconButton";
+import MenuItem from "@/components/ui/MenuItem";
+import Stat from "@/components/ui/Stat";
+import Price from "@/components/ui/Price";
+import NavItem from "@/components/ui/NavItem";
 
 export default function PulseFooter() {
   return (
     <footer className="shrink-0 w-full h-[38px] border-t border-white/10 bg-[#06070b]">
       <div className="flex h-full items-center justify-between px-[12px] text-[12px] text-white/70">
-        {/* ================= LEFT SIDE ================= */}
+        {/* LEFT SIDE  */}
         <div className="flex items-center">
           {/* PRESET */}
           <div className="flex items-center gap-[6px]">
@@ -101,7 +100,7 @@ export default function PulseFooter() {
           </div>
         </div>
 
-        {/* ================= RIGHT SIDE ================= */}
+        {/*RIGHT SIDE */}
         <div className="flex items-center">
           <div className="flex items-center gap-[10px]">
             <div className="flex items-center gap-[8px] ml-[6px] text-white/90">
@@ -162,66 +161,5 @@ export default function PulseFooter() {
         </div>
       </div>
     </footer>
-  );
-}
-
-/* =========================
-   HELPERS
-========================= */
-
-function Divider() {
-  return <div className="mx-[10px] w-[1px] h-[20px] bg-white/10" />;
-}
-
-function IconButton({ children }: { children: React.ReactNode }) {
-  return (
-    <button className="relative w-[24px] h-[24px] flex items-center justify-center rounded hover:bg-white/10">
-      {children}
-      <span className="absolute -top-[2px] -right-[2px] w-[6px] h-[6px] bg-red-500 rounded-full" />
-    </button>
-  );
-}
-
-function NavItem({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <button className="flex items-center gap-[6px] px-[4px] h-[24px] rounded hover:bg-white/10 relative">
-      {icon}
-      <span>{label}</span>
-      <span className="absolute -top-[2px] -right-[2px] w-[6px] h-[6px] bg-red-500 rounded-full" />
-    </button>
-  );
-}
-
-function Price({
-  icon,
-  value,
-  color,
-}: {
-  icon: React.ReactNode;
-  value: string;
-  color: string;
-}) {
-  return (
-    <div className={`flex items-center gap-[4px] ${color}`}>
-      {icon}
-      <span>{value}</span>
-    </div>
-  );
-}
-
-function Stat({ icon, value }: { icon: React.ReactNode; value: string }) {
-  return (
-    <div className="flex items-center gap-[4px] text-white/70">
-      {icon}
-      <span>{value}</span>
-    </div>
-  );
-}
-
-function MenuItem({ children }: { children: React.ReactNode }) {
-  return (
-    <DropdownMenu.Item className="px-[8px] py-[6px] rounded hover:bg-white/10 cursor-pointer">
-      {children}
-    </DropdownMenu.Item>
   );
 }

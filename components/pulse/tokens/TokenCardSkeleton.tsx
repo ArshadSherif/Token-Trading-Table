@@ -10,7 +10,6 @@ export default function TokenCardSkeleton() {
         animate-pulse
       "
     >
-      {/* TOP ROW */}
       <div
         className="
           flex flex-row
@@ -34,7 +33,6 @@ export default function TokenCardSkeleton() {
         </div>
       </div>
 
-      {/* BOTTOM ROW */}
       <div className="flex flex-row gap-[6px] px-[12px] pb-[10px]">
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="w-[30px] h-[18px] rounded-full bg-white/10" />
