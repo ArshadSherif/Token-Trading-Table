@@ -4,16 +4,22 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import {
   QuestionMarkCircledIcon,
   ChevronDownIcon,
-  GearIcon,
-  StarIcon,
-  BellIcon,
-  SpeakerLoudIcon,
 } from "@radix-ui/react-icons";
 
-import { WalletIcon } from "@phosphor-icons/react";
+import {
+  BookmarkIcon,
+  GearSixIcon,
+  KeyboardIcon,
+  ListBulletsIcon,
+  SpeakerHighIcon,
+  WalletIcon,
+} from "@phosphor-icons/react";
 import WalletDropdown from "./WalletDropdown";
+import DisplayDropdownSkeleton from "../ui/skeletons/DisplayDropDownSkeleton";
+import { useState } from "react";
 
 export default function PulseTopBar() {
+  const [open, setOpen] = useState(false);
   return (
     <div className="w-full h-[55px] flex items-center  border-b border-white/10">
       {/* LEFT SECTION */}
@@ -36,13 +42,14 @@ export default function PulseTopBar() {
       {/* RIGHT SECTION */}
       <div className="flex items-center gap-[14px]">
         <IconButton>
-          <QuestionMarkCircledIcon className="w-5 h-5" />
+          <QuestionMarkCircledIcon className="w-4.5 h-4.5 text-white/50" />
         </IconButton>
 
         {/* Display dropdown */}
-        <DropdownMenu.Root>
+        <DropdownMenu.Root modal open={open} onOpenChange={setOpen}>
           <DropdownMenu.Trigger asChild>
-            <button className="flex items-center gap-[8px] h-[32px] px-[14px] rounded-full bg-white/10 hover:bg-white/15 transition-colors">
+            <button className="flex items-center gap-[6px] h-[32px] px-[14px] rounded-full bg-white/10 hover:bg-white/15 transition-colors">
+              <ListBulletsIcon size={19} weight="bold" className="text-white" />
               <span className="text-[15px] text-white font-medium">
                 Display
               </span>
@@ -50,31 +57,30 @@ export default function PulseTopBar() {
             </button>
           </DropdownMenu.Trigger>
 
+          {open && <div className="fixed inset-0 bg-black/40  z-[90]" />}
+
           <DropdownMenu.Portal>
             <DropdownMenu.Content
               align="end"
               sideOffset={8}
-              className="bg-[#111217] border border-white/10 rounded-md p-[6px] shadow-lg z-[100]"
+              className="bg-[#111217] border border-white/15 rounded-xl p-[6px] shadow-2xl z-[100]"
             >
-              <MenuItem>Compact</MenuItem>
-              <MenuItem>Comfortable</MenuItem>
-              <MenuItem>Dense</MenuItem>
+              <DisplayDropdownSkeleton />
             </DropdownMenu.Content>
           </DropdownMenu.Portal>
         </DropdownMenu.Root>
-
         {/* ICONS */}
         <IconButton>
-          <StarIcon className="w-5 h-5" />
+          <BookmarkIcon className="w-5 h-5" />
         </IconButton>
         <IconButton>
-          <BellIcon className="w-5 h-5" />
+          <KeyboardIcon className="w-5 h-5" />
         </IconButton>
         <IconButton>
-          <SpeakerLoudIcon className="w-5 h-5" />
+          <SpeakerHighIcon className="w-4 h-4" />
         </IconButton>
         <IconButton>
-          <GearIcon className="w-5 h-5" />
+          <GearSixIcon className="w-4 h-4" />
         </IconButton>
 
         {/* WALLET DROPDOWN */}

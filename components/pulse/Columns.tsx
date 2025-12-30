@@ -20,12 +20,12 @@ function ColumnSection({
   tokens: any[];
 }) {
   return (
-    <section className="flex flex-col h-full bg-[#111217] border border-white/10">
+    <section className="flex flex-col h-full min-h-0 bg-[#111217] border border-white/10 rounded-[6px]">
       {/* HEADER */}
       {isLoading ? <ColumnHeaderSkeleton /> : <ColumnHeader title={title} />}
 
       {/* SCROLL AREA */}
-      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden">
+      <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden scroll-dark">
         {isLoading
           ? Array.from({ length: 6 }).map((_, i) => (
               <TokenCardSkeleton key={i} />
@@ -53,9 +53,10 @@ export default function Columns() {
     migratedTokens.length === 0;
 
   return (
-    <div className="h-full w-full px-[24px] py-[20px]">
-      <PulseTopBar/>
-      <div className="grid grid-cols-3 gap-[2px] h-full">
+    <div className="h-full w-full px-[24px] pt-[20px] pb-0 flex flex-col">
+      <PulseTopBar />
+
+      <div className="grid grid-cols-3 gap-[12px] flex-1 min-h-0 mt-[12px]">
         <ColumnSection
           title="New Pairs"
           isLoading={isLoading}

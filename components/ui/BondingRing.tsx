@@ -1,55 +1,60 @@
-import clsx from "clsx";
-
 export function BondingRing({
-  percent,
-  color,
+  baseColor,
+  livePercent,
 }: {
-  percent: number;
-  color: "red" | "yellow" | "green";
+  baseColor: "red" | "yellow" | "green";
+  livePercent: number;
 }) {
+  const strong =
+    baseColor === "red"
+      ? "rgba(239,68,68,0.55)"
+      : baseColor === "yellow"
+      ? "rgba(250,204,21,0.55)"
+      : "rgba(52,211,153,0.55)";
+
+  const soft =
+    baseColor === "red"
+      ? "rgba(239,68,68,0.22)"
+      : baseColor === "yellow"
+      ? "rgba(250,204,21,0.22)"
+      : "rgba(52,211,153,0.22)";
+
+  const PERIMETER = 296;
+
   return (
-    <>
-      {/* soft glow */}
-      <div
-        className={clsx(
-          "absolute inset-[-3px] rounded-[6px] opacity-40",
-          color === "red" && "ring-2 ring-red-500/40",
-          color === "yellow" && "ring-2 ring-yellow-400/40",
-          color === "green" && "ring-2 ring-emerald-400/40"
-        )}
+    <svg
+      className="absolute inset-0 z-[2]"
+      viewBox="0 0 100 100"
+      pointerEvents="none"
+    >
+      {/* permanent subtle border */}
+      <rect
+        x="3"
+        y="3"
+        width="94"
+        height="94"
+        rx="10"
+        ry="10"
+        fill="none"
+        stroke={soft}
+        strokeWidth="1.5"
       />
 
-      {/* progress ring */}
-      <svg
-        className="absolute inset-[-6px] w-[86px] h-[86px] -rotate-90"
-        viewBox="0 0 100 100"
-      >
-        <circle
-          cx="50"
-          cy="50"
-          r="46"
-          fill="none"
-          stroke="rgba(255,255,255,0.1)"
-          strokeWidth="6"
-        />
-        <circle
-          cx="50"
-          cy="50"
-          r="46"
-          fill="none"
-          stroke={
-            color === "red"
-              ? "#ef4444"
-              : color === "yellow"
-              ? "#facc15"
-              : "#34d399"
-          }
-          strokeWidth="6"
-          strokeDasharray={289}
-          strokeDashoffset={289 - (289 * percent) / 100}
-          className="transition-all duration-500 ease-out"
-        />
-      </svg>
-    </>
+      {/* thinner, softer animated stroke */}
+      <rect
+        x="3"
+        y="3"
+        width="94"
+        height="94"
+        rx="10"
+        ry="10"
+        fill="none"
+        stroke={strong}
+        strokeWidth="1.6"
+        strokeDasharray={PERIMETER}
+        strokeDashoffset={PERIMETER - (PERIMETER * livePercent) / 100}
+        className="transition-all duration-300 ease-out"
+      />
+    </svg>
   );
 }

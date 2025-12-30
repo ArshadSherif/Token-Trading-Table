@@ -8,6 +8,8 @@ import {
   TooltipContent,
 } from "@/components/ui/Tooltip";
 import { bondingColor } from "@/utils/bonding";
+import { BondingRing } from "../ui/BondingRing";
+
 import {
   Copy,
   User,
@@ -21,14 +23,14 @@ import {
   Stack,
   MagnifyingGlass,
   ShareNetwork,
-  CurrencyCircleDollar,
   ChefHat,
+  EyeSlashIcon,
 } from "@phosphor-icons/react";
 import { Token } from "@/types/token";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import { marketCapColor } from "@/utils/tokenStyles";
 import { formatCompactUSD } from "@/utils/format";
-import { buyPressurePercent, txActivityPercent } from "@/utils/tokenMetrics";
+import { buyPressurePercent } from "@/utils/tokenMetrics";
 
 function shorten(addr: string) {
   return `${addr.slice(0, 3)}...${addr.slice(-3)}`;
@@ -46,7 +48,7 @@ function TokenCard({
   const seconds = useElapsedTime(token.updatedAt);
   const bonding = token.bondingPercentage;
   const bondColor = bondingColor(bonding);
-
+  const livePressure = Math.min(100, Math.max(5, Math.abs(token.txDelta) * 8));
 
   useEffect(() => {
     if (token.price > prevPrice.current) setFlash("up");
@@ -61,7 +63,7 @@ function TokenCard({
       <TooltipTrigger asChild>
         <div
           className={clsx(
-            "w-full border-b border-white/5 px-[10px] py-[8px] transition-colors",
+            "group relative w-full border-b border-white/5 px-[10px] py-[8px] transition-colors",
             flash === "up" && "bg-green-500/10",
             flash === "down" && "bg-red-500/10",
             !flash && "bg-[#0f1015] hover:bg-white/5"
@@ -86,15 +88,24 @@ function TokenCard({
           <div className="flex gap-[10px]">
             {/* IMAGE COLUMN */}
             <div className="flex flex-col items-center gap-[2px] shrink-0">
-              <div className="w-[74px] h-[74px] rounded-l border border-white/20 overflow-hidden bg-black">
-                {token.image && (
-                  <img
-                    src={token.image}
-                    alt={token.symbol}
-                    className="w-full h-full object-cover"
-                    draggable={false}
+              <div className="relative w-[74px] h-[74px]">
+                <div className="relative w-[74px] h-[74px]">
+                  <BondingRing
+                    baseColor={bondColor}
+                    livePercent={livePressure}
                   />
-                )}
+
+                  <div className="absolute inset-[4px] rounded-[6px] overflow-hidden bg-black z-[1]">
+                    {token.image && (
+                      <img
+                        src={token.image}
+                        alt={token.symbol}
+                        className="w-full h-full object-cover p-0.4"
+                        draggable={false}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
 
               <button

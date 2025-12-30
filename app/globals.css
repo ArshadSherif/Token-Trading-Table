@@ -33,3 +33,26 @@ body {
   scrollbar-width: none;
 }
 
+
+/* ===== Custom Dark Scrollbar ===== */
+.scroll-dark {
+  scrollbar-width: thin;                 /* Firefox */
+  scrollbar-color: #3a3d45 transparent;
+}
+
+.scroll-dark::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-dark::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-dark::-webkit-scrollbar-thumb {
+  background-color: #3a3d45;
+  border-radius: 9999px;
+}
+
+.scroll-dark::-webkit-scrollbar-thumb:hover {
+  background-color: #4a4e58;
+}

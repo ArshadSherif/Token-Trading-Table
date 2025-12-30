@@ -94,7 +94,7 @@ export default function PulseHeader() {
           </div>
 
           {/* CENTER NAV */}
-          <div className="ml-2 hidden md:flex w-[560px] min-w-0 mr-auto overflow-hidden">
+          <div className="ml-2 hidden md:flex w-[680px] min-w-0 mr-auto overflow-hidden">
             <div className="flex overflow-x-auto no-scrollbar min-w-0">
               <div className="flex gap-[5px] items-center whitespace-nowrap">
                 {NAV_ITEMS.map(({ label, active }) => (
@@ -104,7 +104,7 @@ export default function PulseHeader() {
             h-[32px] px-[8px] xl:px-[13px]
             rounded-[4px]
             text-[14px] font-medium
-            ${active ? "text-blue-500 bg-blue-500/20" : "text-white"}
+            ${active ? "text-blue-500" : "text-white"}
             hover:bg-blue-500/20 hover:text-blue-400
             [transition:none]
             hover:[transition:background-color_135ms_ease-in-out,color_135ms_ease-in-out]

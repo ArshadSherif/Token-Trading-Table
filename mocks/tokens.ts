@@ -19,7 +19,7 @@ const mockTokens: Token[] = [
     txDelta: 9,
     solAmount: 0.18,
     fValue: 0.097,
-    bondingPercentage: 2.65, // % of liquidity in the bonding curve
+    bondingPercentage: 2.65,
   },
   {
     id: "12",
@@ -39,7 +39,7 @@ const mockTokens: Token[] = [
     txDelta: -6,
     solAmount: 0.11,
     fValue: 0.082,
-    bondingPercentage: 3.12, // % of liquidity in the bonding curve
+    bondingPercentage: 3.12,
   },
   {
     id: "13",
@@ -59,13 +59,14 @@ const mockTokens: Token[] = [
     txDelta: 11,
     solAmount: 0.39,
     fValue: 0.214,
-    bondingPercentage: 4.25, // % of liquidity in the bonding curve
+    bondingPercentage: 4.25,
   },
   {
     id: "14",
     symbol: "MESH",
     name: "Mesh Network",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/ST2s_9vARjvoEDCemLOhGDegbqOQvrKlUW1rniwcPCE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTk0/Mjk1Mzc2NS9waG90/by9hYnN0cmFjdC1k/aWdpdGFsLW5ldHdv/cmstc3BoZXJlLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1E/eVJBOTV4cjRETzlF/RGloS2J4MzRhb2g0/a1RRYldSNGtWd05n/TFM0TWJ3PQ",
     price: 0.087,
     priceChange24h: -5.1,
     volume24h: 740_000,
@@ -78,13 +79,14 @@ const mockTokens: Token[] = [
     txDelta: -4,
     solAmount: 0.03,
     fValue: 0.021,
-    bondingPercentage: 1.75, // % of liquidity in the bonding curve
+    bondingPercentage: 1.75,
   },
   {
     id: "15",
     symbol: "ZENX",
     name: "Zen Protocol",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/MbA_qPYVbspG7cTkTAyU81O2IRWZUg81faU-ylc9HYI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9taXJv/Lm1lZGl1bS5jb20v/djIvMSpUWjk1blRE/N1U4TWtxNUFCY2Vr/OVV3LnBuZw",
     price: 6.92,
     priceChange24h: 0.6,
     volume24h: 4_800_000,
@@ -97,13 +99,14 @@ const mockTokens: Token[] = [
     txDelta: 19,
     solAmount: 0.61,
     fValue: 0.347,
-    bondingPercentage: 5.15, // % of liquidity in the bonding curve
+    bondingPercentage: 5.15,
   },
   {
     id: "16",
     symbol: "PIX",
     name: "Pixel Swap",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/lpRF8vJD6jBPq8-scHH4p_TUcd6ZG-BBW6B8SbVrenw/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZs/YXRpY29uLmNvbS8x/MjgvMzY1LzM2NTg1/Mi5wbmc",
     price: 0.012,
     priceChange24h: -8.4,
     volume24h: 390_000,
@@ -116,13 +119,14 @@ const mockTokens: Token[] = [
     txDelta: -2,
     solAmount: 0.008,
     fValue: 0.009,
-    bondingPercentage: 0.85, // % of liquidity in the bonding curve
+    bondingPercentage: 0.85,
   },
   {
     id: "17",
     symbol: "AURA",
     name: "Aura Finance",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/501EhMEHdrdWNeTcelcwgUJhOpPU_GTcIJHIobjv4Nk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/Y3J5cHRvcmFuay5p/by9jb2lucy9hdXJh/X2ZpbmFuY2UxNjU4/MjIwMTU2ODAwLnBu/Zw",
     price: 2.18,
     priceChange24h: 7.2,
     volume24h: 2_950_000,
@@ -135,13 +139,14 @@ const mockTokens: Token[] = [
     txDelta: 16,
     solAmount: 0.48,
     fValue: 0.266,
-    bondingPercentage: 3.75, // % of liquidity in the bonding curve
+    bondingPercentage: 3.75,
   },
   {
     id: "18",
     symbol: "DRIFT",
     name: "Drift X",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/FHmWO1O_vemHuzwS0L4NC7bNXjNqIpGDy-OEwVRXS9c/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDkv/MzI4LzA1NC9zbWFs/bC9ibHVlLXN3b3Jk/LXNsYXNoLWFjdGlv/bi1jYXJ0b29uLWVm/ZmVjdC12ZWN0b3Iu/anBn",
     price: 0.58,
     priceChange24h: -1.1,
     volume24h: 1_120_000,
@@ -154,13 +159,14 @@ const mockTokens: Token[] = [
     txDelta: -5,
     solAmount: 0.09,
     fValue: 0.071,
-    bondingPercentage: 2.25, // % of liquidity in the bonding curve
+    bondingPercentage: 9.25,
   },
   {
     id: "19",
     symbol: "LYNX",
     name: "Lynx Protocol",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/sAl98H_n6kVauQiBp4hVyDo9NE6K2RwInGLj0E9lVn8/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9kaXJl/Y3R1cy5saW5pdHku/Y29tL2Fzc2V0cy84/ZTA4YmFkYS01OWMy/LTRjYjEtYjIxZS04/MGU3NGMyZjMzMjA_/d2lkdGg9MTI4JmZv/cm1hdD13ZWJwJnF1/YWxpdHk9MTAw",
     price: 9.34,
     priceChange24h: 0.3,
     volume24h: 6_200_000,
@@ -173,13 +179,14 @@ const mockTokens: Token[] = [
     txDelta: 21,
     solAmount: 0.88,
     fValue: 0.512,
-    bondingPercentage: 6.5, // % of liquidity in the bonding curve
+    bondingPercentage: 6.5,
   },
   {
     id: "20",
     symbol: "SPARK",
     name: "Spark Layer",
-    image: "",
+    image:
+      "https://imgs.search.brave.com/02BU0XzF-PfaqexE99zOCJCvNZasfLzGJXSQ8ZUCFjQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/c3BhcmtsYXllci5p/by9hc3NldHMvaW1h/Z2VzL2hvbWVwYWdl/L3NjcmVlbjA2LWNv/bm5lY3QuanBn",
     price: 0.044,
     priceChange24h: 10.6,
     volume24h: 680_000,
@@ -192,7 +199,167 @@ const mockTokens: Token[] = [
     txDelta: 8,
     solAmount: 0.15,
     fValue: 0.093,
-    bondingPercentage: 1.95, // % of liquidity in the bonding curve
+    bondingPercentage: 1.95,
+  },
+  {
+    id: "21",
+    symbol: "NEBULA",
+    name: "Nebula Core",
+    image:
+      "https://imgs.search.brave.com/mtTjBMX8Evuv4dwo_JyCPtTPYGOAv-RN59SRHMK8AcQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTkv/MTk0LzI4MS9zbWFs/bC9hLW1pbmltYWxp/c3QtY2lyY3VsYXIt/Y29tcG9zaXRpb24t/ZmVhdHVyaW5nLWEt/c3dpcmxpbmctY29y/ZS1hbmQtZmxvYXRp/bmctZWxlbWVudHMt/aW4tYS1ib2xkLWJs/YWNrLWFuZC13aGl0/ZS1kZXNpZ24tdmVj/dG9yLmpwZw",
+    price: 0.64,
+    priceChange24h: 3.1,
+    volume24h: 1_320_000,
+    liquidity: 540_000,
+    marketCap: 6_800_000,
+    stage: "NEW",
+    updatedAt: Date.now() - 7000,
+
+    txCount: 18,
+    txDelta: 7,
+    solAmount: 0.21,
+    fValue: 0.134,
+    bondingPercentage: 2.2,
+  },
+  {
+    id: "22",
+    symbol: "VOLT",
+    name: "Volt Network",
+    image:
+      "https://imgs.search.brave.com/alK1iMl4rXAi4wHsit7CAscgT53x2bSayNIT5PndoVU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni8xMDU3LzEwNTcx/MjEucG5nP3NlbXQ9/YWlzX3doaXRlX2xh/YmVs",
+    price: 1.24,
+    priceChange24h: -1.9,
+    volume24h: 2_050_000,
+    liquidity: 910_000,
+    marketCap: 11_400_000,
+    stage: "FINAL",
+    updatedAt: Date.now() - 13000,
+
+    txCount: 26,
+    txDelta: -3,
+    solAmount: 0.33,
+    fValue: 0.198,
+    bondingPercentage: 3.9,
+  },
+  {
+    id: "23",
+    symbol: "QUARK",
+    name: "Quark Finance",
+    image:
+      "https://imgs.search.brave.com/5UNmAI3-ayca9vz7s_t7yj_kEZ7gDbl2SC05aMl5Ubs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/cXVhcmsuY29tL2Fz/c2V0cy9RdWFya0F1/dGhvcl9CUkFORE1B/UkstSWNvbi1HUkFZ/LndlYnA",
+    price: 0.052,
+    priceChange24h: 6.7,
+    volume24h: 480_000,
+    liquidity: 160_000,
+    marketCap: 980_000,
+    stage: "NEW",
+    updatedAt: Date.now() - 4000,
+
+    txCount: 12,
+    txDelta: 5,
+    solAmount: 0.04,
+    fValue: 0.031,
+    bondingPercentage: 1.1,
+  },
+  {
+    id: "24",
+    symbol: "ATLAS",
+    name: "Atlas Bridge",
+    image:
+      "https://imgs.search.brave.com/2j2gavvGXUMooUtOuOj-FDvMwdrkpJrWRd0T8AeuggY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni85ODU2Lzk4NTY5/MzUucG5nP3NlbXQ9/YWlzX3doaXRlX2xh/YmVs",
+    price: 4.86,
+    priceChange24h: -0.4,
+    volume24h: 3_900_000,
+    liquidity: 1_850_000,
+    marketCap: 24_500_000,
+    stage: "MIGRATED",
+    updatedAt: Date.now() - 16000,
+
+    txCount: 39,
+    txDelta: 14,
+    solAmount: 0.57,
+    fValue: 0.301,
+    bondingPercentage: 4.8,
+  },
+  {
+    id: "25",
+    symbol: "ION",
+    name: "Ion Exchange",
+    image:
+      "https://imgs.search.brave.com/LrOuJQdI_-gFkGTUco5XNzGpzWFzNEkqtrzKVX2-fmo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni85MzczLzkzNzM1/MDcucG5nP3NlbXQ9/YWlzX3doaXRlX2xh/YmVs",
+    price: 0.19,
+    priceChange24h: -4.6,
+    volume24h: 910_000,
+    liquidity: 310_000,
+    marketCap: 2_700_000,
+    stage: "FINAL",
+    updatedAt: Date.now() - 25000,
+
+    txCount: 9,
+    txDelta: -7,
+    solAmount: 0.07,
+    fValue: 0.052,
+    bondingPercentage: 1.6,
+  },
+  {
+    id: "26",
+    symbol: "PYRO",
+    name: "Pyro Labs",
+    image:
+      "https://imgs.search.brave.com/Xfr5EObRssAG1YBP3JeaumViCPGCJL-WK4XIG5ShUQQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZy/ZWVwaWsuY29tLzI1/Ni8zNDgzLzM0ODM4/MTQucG5nP3NlbXQ9/YWlzX3doaXRlX2xh/YmVs",
+    price: 7.35,
+    priceChange24h: 2.4,
+    volume24h: 5_600_000,
+    liquidity: 2_700_000,
+    marketCap: 41_000_000,
+    stage: "MIGRATED",
+    updatedAt: Date.now() - 9000,
+
+    txCount: 44,
+    txDelta: 18,
+    solAmount: 0.72,
+    fValue: 0.418,
+    bondingPercentage: 6.9,
+  },
+  {
+    id: "27",
+    symbol: "NEXUS",
+    name: "Nexus Grid",
+    image:
+      "https://imgs.search.brave.com/AFNlOmHZDyEqc4CDHEmBN3Y0Sdr8_Uc_eLlGKTpF14g/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM3/MDUwMjE1NS92ZWN0/b3IvcGl4ZWwtZGVz/aWduLW9mLWEtcm9j/a2V0LWljb24uanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPUpI/NFRTMVdfelFWUGpG/SVNmSU12d0kxU0Vw/Q0tOb1JRSkp3TllX/VnZ4aXM9",
+    price: 0.41,
+    priceChange24h: 9.8,
+    volume24h: 1_740_000,
+    liquidity: 620_000,
+    marketCap: 5_300_000,
+    stage: "NEW",
+    updatedAt: Date.now() - 3000,
+
+    txCount: 21,
+    txDelta: 12,
+    solAmount: 0.19,
+    fValue: 0.121,
+    bondingPercentage: 2.85,
+  },
+  {
+    id: "28",
+    symbol: "ORION",
+    name: "Orion Vault",
+    image:
+      "https://imgs.search.brave.com/Cf7uFgRg3i48rZNAvqa-1eTZxoOQ9VPL_Jz06Va_qs0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS12/ZWN0b3Ivb3Jpb24t/aWNvbi1sb2dvLWRl/c2lnbi12ZWN0b3It/MjYwbnctMjIzODY1/MDQzMy5qcGc",
+    price: 2.96,
+    priceChange24h: -3.2,
+    volume24h: 2_680_000,
+    liquidity: 1_120_000,
+    marketCap: 16_900_000,
+    stage: "FINAL",
+    updatedAt: Date.now() - 18000,
+
+    txCount: 31,
+    txDelta: -8,
+    solAmount: 0.44,
+    fValue: 0.257,
+    bondingPercentage: 3.3,
   },
 ];
 

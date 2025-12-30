@@ -17,7 +17,7 @@ export default function PulseLayout() {
       </div>
 
       {/* COLUMNS — TAKES ALL REMAINING SPACE */}
-      <div className="flex-1 min-h-0 overflow-hidden">
+      <div className="flex-1 min-h-0 overflow-hidden pb-[16px]">
         <Columns />
       </div>
 
