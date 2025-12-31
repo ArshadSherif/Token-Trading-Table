@@ -21,7 +21,7 @@ export default function ColumnSection({
   column
 }: ColumnSectionProps) {
   return (
-    <section className="flex flex-col h-full min-h-0 bg-[#111217] border border-white/10 rounded-[6px]">
+    <section className="flex flex-col h-full min-h-0 bg-[#111217] border border-white/10 rounded-[2px]">
       {isLoading ? <ColumnHeaderSkeleton /> : <ColumnHeader title={title} />}
 
       <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden scroll-dark">

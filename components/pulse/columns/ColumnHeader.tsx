@@ -5,6 +5,7 @@ import { LightningBoltIcon } from "@radix-ui/react-icons";
 import TierDropdown from "@/components/ui/TierDropdown";
 import { FadersHorizontalIcon } from "@phosphor-icons/react";
 import FiltersModalWrapper from "@/components/ui/skeletons/FiltersModal";
+import { AppTooltip } from "@/components/ui/AppToolTip";
 
 export default function ColumnHeader({ title }: { title: string }) {
   return (
@@ -18,23 +19,18 @@ export default function ColumnHeader({ title }: { title: string }) {
         bg-[#111217]
       "
     >
-      {/* LEFT — TITLE */}
       <span className="text-[16px] font-medium text-white whitespace-nowrap">
         {title}
       </span>
 
-      {/* RIGHT — CONTROLS */}
       <div className="flex items-center gap-[10px]">
-        {/* ===== PILL ===== */}
         <div className="flex items-center h-[28px] rounded-full border border-white/10 overflow-hidden">
-          {/* LEFT SECTION */}
           <div className="flex items-center justify-between gap-[6px] px-[10px] min-w-[80px]">
             <div className="flex items-center gap-[4px] text-white/80">
               <LightningBoltIcon />
               <span className="text-[13px] font-medium">0</span>
             </div>
 
-            {/* SOL ICON */}
             <img
               src="/solana.png"
               alt="sol"
@@ -43,25 +39,23 @@ export default function ColumnHeader({ title }: { title: string }) {
             />
           </div>
 
-          {/* DIVIDER */}
           <div className="w-[1px] h-full bg-white/10" />
 
-          {/* RIGHT SECTION — P1 P2 P3 */}
           <div className="flex items-center px-[6px] gap-[4px]">
             <TierDropdown label="P1" active />
             <TierDropdown label="P2" />
             <TierDropdown label="P3" />
           </div>
         </div>
-
-        {/* ===== SETTINGS ICON ===== */}
-        <FiltersModalWrapper
-          trigger={
-            <button className="w-[28px] h-[28px] flex items-center justify-center hover:bg-white/5">
-              <FadersHorizontalIcon size={18} />
-            </button>
-          }
-        />
+        <AppTooltip content="Filters">
+          <FiltersModalWrapper
+            trigger={
+              <button className="w-[28px] h-[28px] flex items-center justify-center hover:bg-white/5">
+                <FadersHorizontalIcon size={18} />
+              </button>
+            }
+          />
+        </AppTooltip>
       </div>
     </div>
   );

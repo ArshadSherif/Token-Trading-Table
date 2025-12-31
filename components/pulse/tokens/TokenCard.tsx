@@ -172,6 +172,7 @@ function TokenCard({
               <div className="flex justify-end text-[11px] text-white/60">
                 <div className="flex items-center gap-[8px]">
                   <span className="flex items-center gap-[3px]">
+                    F
                     <img
                       src="/solana.png"
                       alt="sol"
@@ -202,7 +203,7 @@ function TokenCard({
 
               {/* ROW 4 — PILLS + SOL BUTTON */}
               <div className="flex items-center justify-between text-[12px]">
-                <div className="flex items-center gap-[4px]">
+                <div className="flex items-center gap-[4px] flex-wrap lg:flex-nowrap">
                   <span className="flex items-center gap-[4px] h-[22px] px-[8px] rounded-full border border-white/5 text-[13px]">
                     <User size={13} className="text-emerald-400" />
                     <span className="text-emerald-400">0%</span>
@@ -229,7 +230,7 @@ function TokenCard({
                   </span>
                 </div>
 
-                <button className="max-lg:hidden flex items-center gap-[4px] h-[24px] px-[8px] rounded-full bg-[#526FFF] text-black text-[13px] font-medium">
+                <button className="hidden lg:flex shrink-0 items-center gap-[4px] h-[24px] px-[8px] rounded-full bg-[#526FFF] text-black text-[13px] font-medium whitespace-nowrap">
                   <Lightning size={13} weight="fill" />0 SOL
                 </button>
               </div>
