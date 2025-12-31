@@ -16,7 +16,7 @@ export function TooltipContent(
   props: React.ComponentProps<typeof Tooltip.Content>
 ) {
   return (
-    <Tooltip.Portal container={document.body}>
+    <Tooltip.Portal>
       <Tooltip.Content {...props} />
     </Tooltip.Portal>
   );
